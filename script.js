@@ -7,13 +7,13 @@ function renderAdvice(advices) {
 }
 
 function renderAdviceId(adviceIds) {
-    adviceId.textContent = adviceIds
+    id.textContent = adviceIds
 }
 
 async function getAdvice() {
     const url = "https://api.adviceslip.com/advice"
     let advices = ''
-    let adviceId = ''
+    let adviceIds = ''
 
     try {
         const response = await fetch(url)
@@ -21,7 +21,7 @@ async function getAdvice() {
 
         if (data.slip) {
             advices = `"${(data.slip.advice)}"` 
-            adviceId = `advice #${(data.slip.id)}`
+            adviceIds = `advice #${(data.slip.id)}`
         }
     }
 
@@ -30,9 +30,9 @@ async function getAdvice() {
     }
 
 
-console.log(advices)
-     renderAdvice(advices)
-     renderAdviceId(adviceId)
+    console.log(advices)
+    renderAdvice(advices)
+    renderAdviceId(adviceIds)
 }
 
 button.addEventListener('click', getAdvice)
